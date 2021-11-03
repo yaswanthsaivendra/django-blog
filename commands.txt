@@ -1,0 +1,9 @@
+python3 -m django-admin
+python3 -m django-admin startproject django_blog
+
+python3 manage.py runserver
+python3 manage.py startapp blog
+
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py createsuperuser
