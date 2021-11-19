@@ -20,7 +20,9 @@ import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+env = environ.Env()
+# reading .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 
@@ -158,14 +160,14 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = env('HOST_EMAIL')
-EMAIL_HOST_PASSWORD = env('HOST_PASSWORD')
+EMAIL_HOST_USER = env("HOST_EMAIL")
+EMAIL_HOST_PASSWORD = env("HOST_PASSWORD")
 
 
 
-AWS_ACCESS_KEY_ID= env('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY= env('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME= env('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID= env("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY= env("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME= env("AWS_STORAGE_BUCKET_NAME")
 
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -174,6 +176,4 @@ AWS_QUERYSTRING_AUTH = False
 
 
 
-env = environ.Env()
-# reading .env file
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
